@@ -70,7 +70,7 @@ public class Bird implements Renderable, Updatable {
             yVel = 0;
         }
 
-        if (input.isSpacePressed()) flap();
+        if (input.isMousePressed()) flap();
 
 
         if ((x >= pipeX && x <= pipeX + pipes.getPipeWidth()

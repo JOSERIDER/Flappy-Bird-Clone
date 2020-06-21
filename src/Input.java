@@ -1,35 +1,30 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class Input implements MouseListener {
 
-    private boolean spacePressed= false;
-    private boolean spaceReleased = true;
+    private boolean mousePressed = false;
 
-    public boolean isSpacePressed() {
-        boolean s = spacePressed;
-        spacePressed = false;
+    public boolean isMousePressed() {
+        boolean s = mousePressed;
+        mousePressed = false;
         return s;
     }
 
 
     @Override
     public void mouseClicked(MouseEvent e) {
-            spaceReleased = false;
-            spacePressed = true;
+        mousePressed = true;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-            spaceReleased = true;
 
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-            spacePressed = true;
+            mousePressed = true;
     }
 
     @Override

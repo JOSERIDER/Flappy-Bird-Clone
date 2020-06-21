@@ -29,7 +29,7 @@ public class Game {
         game.addMouseListener(input);
 
         //Game lopp
-        final int TICKS_PER_SECONDS = 80;
+        final int TICKS_PER_SECONDS = 60;
         final int TIME_PER_TICK = 1000 / TICKS_PER_SECONDS;
         final int MAZ_FRAMESKIPS = 5;
 
@@ -59,8 +59,6 @@ public class Game {
 
             //FPS check
             if (System.currentTimeMillis() - timeAsLastFPSCheck >= 1000) {
-                System.out.println("FPS: "+ ticks);
-                gameWindow.setTitle(GAME_NAME + "- FPS: "+ ticks);
                 ticks = 0;
                 timeAsLastFPSCheck = System.currentTimeMillis();
             }
