@@ -10,11 +10,11 @@ public class Bird implements Renderable, Updatable {
     private float gravity = .25f;
 
     private Pipes pipes;
-    private int scoredPipes = 0;
+    private int scoredPipe = 0;
     private int score = 0;
 
 
-    private Font gameFont = new Font("Arial",Font.BOLD , 30 );
+    private Font gameFont = new Font("Arial", Font.BOLD, 30);
 
     private BufferedImage flapUp;
     private BufferedImage flapDown;
@@ -41,7 +41,7 @@ public class Bird implements Renderable, Updatable {
         yVel = baseYVel;
     }
 
-    private void flap(){
+    private void flap() {
         yVel = baseYVel;
     }
 
@@ -49,10 +49,10 @@ public class Bird implements Renderable, Updatable {
     public void render(Graphics2D graphics2D, float interpolation) {
         graphics2D.setColor(Color.BLUE);
 
-        graphics2D.drawImage(yVel <= 0 ? flapUp : flapDown, (int) x, (int) (y + (yVel * interpolation)), null);
+        graphics2D.drawImage(yVel <= 0 ? flapUp : flapDown, x, (int) (y + (yVel * interpolation)), null);
 
         graphics2D.setFont(gameFont);
-        graphics2D.drawString("Score: "+score, 20,50);
+        graphics2D.drawString("Score: " + score, 20, 50);
     }
 
     @Override
@@ -65,26 +65,24 @@ public class Bird implements Renderable, Updatable {
         y += yVel;
         yVel += gravity;
 
-        if (y < 0){
+        if (y < 0) {
             y = 0;
             yVel = 0;
         }
 
+        if (input.isSpacePressed()) flap();
 
-        if (input.isSpacePressed()){
-            flap();
-        }
 
-        if ((x >= pipeX && x <= pipeX +pipes.getPipeWidth()
-        && (y <= pipeY || y >= pipeY + pipes.getPipeVerticalSpacing()))
-        || y >= Game.HEIGHT){
+        if ((x >= pipeX && x <= pipeX + pipes.getPipeWidth()
+                && (y <= pipeY || y >= pipeY + pipes.getPipeVerticalSpacing()))
+                || y >= Game.HEIGHT) {
             pipes.resetPipes();
             resetBird();
-            score =0;
-        }else {
+            score = 0;
+        } else {
             int currentPipeId = pipes.getCurrentPipeId();
-            score = (scoredPipes != currentPipeId) ? score +1 : score;
-            scoredPipes = currentPipeId;
+            score = (scoredPipe != currentPipeId) ? score + 1 : score;
+            scoredPipe = currentPipeId;
         }
     }
 }

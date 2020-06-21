@@ -26,10 +26,10 @@ public class Game {
 
         //Init Input
         input = new Input();
-        game.addKeyListener(input);
+        game.addMouseListener(input);
 
         //Game lopp
-        final int TICKS_PER_SECONDS = 60;
+        final int TICKS_PER_SECONDS = 80;
         final int TIME_PER_TICK = 1000 / TICKS_PER_SECONDS;
         final int MAZ_FRAMESKIPS = 5;
 
@@ -41,8 +41,7 @@ public class Game {
         int ticks = 0;
 
 
-        boolean running = true;
-        while (running) {
+        while (true) {
             // Updating
             loops = 0;
 
@@ -66,8 +65,6 @@ public class Game {
                 timeAsLastFPSCheck = System.currentTimeMillis();
             }
         }
-
-
 
         //Game end
     }

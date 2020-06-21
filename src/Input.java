@@ -1,7 +1,9 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class Input implements KeyListener {
+public class Input implements MouseListener {
 
     private boolean spacePressed= false;
     private boolean spaceReleased = true;
@@ -12,24 +14,31 @@ public class Input implements KeyListener {
         return s;
     }
 
+
     @Override
-    public void keyTyped(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE && spaceReleased){
+    public void mouseClicked(MouseEvent e) {
             spaceReleased = false;
             spacePressed = true;
-        }
-
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE){
+    public void mousePressed(MouseEvent e) {
             spaceReleased = true;
-        }
+
     }
 
     @Override
-    public void keyReleased(KeyEvent e) {
+    public void mouseReleased(MouseEvent e) {
+            spacePressed = true;
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }
